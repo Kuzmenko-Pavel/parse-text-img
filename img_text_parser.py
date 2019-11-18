@@ -23,8 +23,19 @@ def captch_ex(file_name):
 
         # draw rectangle around contour on original image
         cv2.rectangle(img, (x, y), (x + w, y + h), (255, 0, 255), 2)
-    cv2.imshow('captcha_result', img)
-    cv2.waitKey()
+
+    cv2.namedWindow(file_name)
+    cv2.imshow(file_name, img)
+    while True:
+        k = cv2.waitKey(100)
+        if k == 27:
+            print('ESC')
+            cv2.destroyAllWindows()
+            break
+
+        if cv2.getWindowProperty(file_name, cv2.WND_PROP_VISIBLE) < 1:
+            break
+    cv2.destroyAllWindows()
 
 
 file_name = 'your_image.jpg'
