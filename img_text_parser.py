@@ -29,11 +29,14 @@ def captch_ex(file_name):
     while True:
         k = cv2.waitKey(100)
         if k == 27:
-            print('ESC')
-            cv2.destroyAllWindows()
+            print('ESC Exit')
+            break
+        elif k > -1:
+            print('Other key Exit')
             break
 
         if cv2.getWindowProperty(file_name, cv2.WND_PROP_VISIBLE) < 1:
+            print('Close window Exit')
             break
     cv2.destroyAllWindows()
 
